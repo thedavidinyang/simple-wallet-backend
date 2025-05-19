@@ -32,7 +32,6 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
     ];
 
-
     /**
      * Get the attributes that should be cast.
      *
@@ -41,10 +40,9 @@ class User extends Authenticatable implements JWTSubject
     protected function casts(): array
     {
         return [
-            'password'          => 'hashed',
+            'password' => 'hashed',
         ];
     }
-
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
@@ -67,10 +65,14 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Session::class);
     }
 
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
 
+    public function transactions(){
 
-
-
-
+        return $this->hasMany(Transaction::class); 
+    }
 
 }
