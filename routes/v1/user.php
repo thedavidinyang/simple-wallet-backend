@@ -11,10 +11,7 @@ Route::group([
         return 123;
     });
 
-    Route::controller('UserController')->group(function () {
-        Route::get('/aha', 'aha');
 
-    });
 
 });
 
@@ -30,11 +27,7 @@ Route::group([
         Route::get('/', 'getUserProfile');
     });
 
-    Route::prefix('/pin')->controller('PinController')->group(function () {
 
-        Route::post('/', 'createPin');
-
-    });
 
 
 

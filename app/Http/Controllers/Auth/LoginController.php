@@ -2,22 +2,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\SendEmailJob;
-use App\Mail\OtpMail;
-use App\Models\LoginAttempt;
-use App\Models\LoginLog;
 use App\Models\RefreshToken;
 use App\Models\User;
+use App\Service\AuthService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Jenssegers\Agent\Agent;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Log;
-use App\Service\AuthService;
-
 
 class LoginController extends Controller
 {
@@ -38,7 +31,6 @@ class LoginController extends Controller
 
             if (! $token) {
 
-
                 return response()->json([
                     'status'  => false,
                     'message' => "login failed,",
@@ -49,15 +41,14 @@ class LoginController extends Controller
             $user = auth()->user();
 
             return response()->json([
-                'status'       => true,
-                'message'      => 'Login successful',
-                'token'        => $token,
-                'token_type'   => 'bearer',
-                'expires_in'   => auth('api')->factory()->getTTL() * 60,
+                'status'     => true,
+                'message'    => 'Login successful',
+                'token'      => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth('api')->factory()->getTTL() * 60,
             ], 200);
 
         } catch (\Throwable $e) {
-
 
             return response()->json([
                 'error'  => $e->getMessage(),
@@ -97,8 +88,6 @@ class LoginController extends Controller
         return $refresh_token->token;
     }
 
-
-
     public static function validateRefreshToken($token)
     {
         $refreshToken = RefreshToken::where('token', $token)->first();
@@ -109,8 +98,6 @@ class LoginController extends Controller
 
         return null;
     }
-
- 
 
     public function signOut()
     {

@@ -14,9 +14,7 @@ Route::group([
 
 
     require __DIR__ . '/v1/auth.php';
-    require __DIR__ . '/v1/general.php';
     require __DIR__ . '/v1/user.php';
-    // require __DIR__ . '/v1/admin.php';
 
 });
 

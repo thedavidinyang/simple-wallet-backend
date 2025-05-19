@@ -5,7 +5,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: your-dockerhub-username/laravel-app:latest
+        image: thedavidinyang/laravel-app:latest
         restart: unless-stopped
         working_dir: /var/www
         volumes:

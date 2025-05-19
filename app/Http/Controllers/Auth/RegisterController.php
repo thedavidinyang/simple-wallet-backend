@@ -2,32 +2,23 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Mail\OtpMail;
-use App\Mail\verifyEmail;
-use App\Models\Otp;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
-use App\Jobs\SendEmailJob;
 
 class RegisterController extends Controller
 {
-
-
 
     public function register(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            'full_name'   => 'required|string|max:25|regex:/^\S*$/',
-            'email'        => 'required|string|email|max:50',
-            'password'     => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
+            'full_name' => 'required|string|max:25|regex:/^\S*$/',
+            'email'     => 'required|string|email|max:50',
+            'password'  => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
         ]);
 
         if ($validator->fails()) {
@@ -56,36 +47,26 @@ class RegisterController extends Controller
                     'errors'  => $validator->errors(),
                 ], 422);
             }
-          
-
 
             $userData = [
-                'email'    => $request->email,
-                'password' => $request->password,
+                'email'     => $request->email,
+                'password'  => $request->password,
                 'full_name' => $request->full_name,
             ];
 
             $user = User::create($userData);
 
-
-
-
             DB::commit();
-  
-
-
-
 
             return response()->json([
                 'status'  => true,
                 'message' => 'Registration successful',
                 'data'    => [
-                    'user'    => $user,
+                    'user' => $user,
                 ],
             ], 200);
 
         } catch (\Throwable $e) {
-
 
             return response()->json([
                 'status'  => false,
@@ -96,7 +77,5 @@ class RegisterController extends Controller
         }
 
     }
-
-   
 
 }
