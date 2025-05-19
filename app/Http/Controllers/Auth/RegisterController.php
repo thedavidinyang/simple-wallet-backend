@@ -56,6 +56,8 @@ class RegisterController extends Controller
 
             $user = User::create($userData);
 
+            $user->wallet()->create();
+
             DB::commit();
 
             return response()->json([

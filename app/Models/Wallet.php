@@ -16,6 +16,8 @@ class Wallet extends Model
     public $hidden = [
         'created_at',
         'updated_at',
+        'id',
+        'user_id',
     ];
 
     public function user()

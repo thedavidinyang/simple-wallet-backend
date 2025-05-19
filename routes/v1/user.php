@@ -25,6 +25,7 @@ Route::group([
     Route::prefix('/profile')->controller('Usercontroller')->group(function () {
 
         Route::get('/', 'getUserProfile');
+        Route::get('/wallet', 'getWallet');
     });
 
 

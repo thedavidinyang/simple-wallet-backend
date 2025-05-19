@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Service\MonnifyService;
+use Illuminate\Http\Request;
 
 class Transaction extends Controller
 {
@@ -14,9 +13,23 @@ class Transaction extends Controller
     public function verify(Request $request)
     {
 
-        $MONNIFY = (new MonnifyService());
+        try {
+            $request->validate([
+                'transaction_id' => 'required|string',
+            ]);
 
+            $MONNIFY = (new MonnifyService());
 
-        return $MONNIFY->monAuth();
+            return $MONNIFY->verifyTransaction($request->transaction_id);
+
+        } catch (\Exception $e) {
+
+            return response()->json([
+                'status'  => false,
+                'message' => $e->getMessage(),
+                'errors'  => $e->getMessage(),
+            ], 400);
+        }
     }
+    
 }

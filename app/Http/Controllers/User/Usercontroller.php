@@ -24,4 +24,17 @@ class Usercontroller extends Controller
         ], 200);
 
     }
+
+
+        public function getWallet(){
+
+
+        $user = auth()->user();
+
+        return response()->json([
+            'status'  => true,
+            'message' => 'wallet fetched successfully',
+            'data'    => $user->wallet,
+        ], 200);
+    }
 }
