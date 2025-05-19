@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      background-color: #ffffff;
+      color: #57584e;
+      font-size: 16px;
+      line-height: 24px;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    .logo {
+      text-align: left;
+      padding-bottom: 20px;
+    }
+    .logo img {
+      height: 32px;
+    }
+    .content {
+      line-height: 1.5;
+      border: 1px solid #ccd1d6;
+      padding: 30px;
+      border-radius: 8px;
+    }
+    .otp {
+      color: #010b14;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 40px;
+      margin: 24px 0;
+    }
+    .divider {
+      width: 100%;
+      border-bottom: 1px solid #ccd1d6;
+      margin: 24px 0;
+    }
+    .footer {
+      font-size: 14px;
+      color: #666666;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 216" style="enable-background:new 0 0 576 216;">
+        <!-- Include the full, valid SVG code here -->
+    </svg>
+      <img src="https://s3-eu-west-1.amazonaws.com/pstk-integration-logos/paystack-email.png" alt="Silicash Logo">
+    </div>
+    <div class="content">
+      <p style="font-size: 18px; font-weight: 500; color: #010b14;">{{mail title}}</p>
+
+      <p style="font-size: 16px; font-weight: 400; color: #010b14;">Hi {{firstname}},</p>
+      <p>Verify your email using the one-time-password (OTP) below:</p>
+      <p class="otp">{{otp}}</p>
+      <p>The OTP will expire in 30 minutes.</p>
+      <div class="divider"></div>
+      <p>
+        If you did not initiate this OTP request, we strongly advise you reset your password
+        immediately to secure your account and notify us as soon as possible via
+        <a href="{{email.support}}" target="_blank">{{email.support}}</a>.
+      </p>
+      <p>Thank you.</p>
+    </div>
+    <div class="footer">
+      © Silicash Inc 2024<br>
+      Simplifying Payments
+    </div>
+  </div>
+</body>
+</html>
