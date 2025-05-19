@@ -14,13 +14,7 @@ class verifyPhone
     {
         $user = Auth::user();
 
-        if($user->phone_verified_at == null){
-            return response()->json([
-                'status'  => false,
-                'message' => 'Verify phone number to proceed',
-                'errors'  => ['phone_unverified' => 'Verify phone number to proceed.'],
-            ], 403);
-        }
+  
 
         return $next($request);
     }

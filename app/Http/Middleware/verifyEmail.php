@@ -14,14 +14,7 @@ class verifyEmail
         $user = Auth::user();
 
 
-        if ( !$user->email_verified) {
-
-            return response()->json([
-                'status'  => false,
-                'message' => 'verify email to proceed',
-                'error'   => 'unverified email',
-            ], 403);
-        }
+       
 
         return $next($request);
     }

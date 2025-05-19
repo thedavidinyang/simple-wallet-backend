@@ -18,16 +18,7 @@ class VerifyPin
     public function handle(Request $request, Closure $next): Response
     {
 
-        $request->validate([
-            'pin' => 'required|digits:4',
-        ]);
-
-        $user = Auth::user();
-
-        if (!Hash::check($request->pin, $user->pin)) {
-            return response()->json(['message' => 'Invalid PIN.'], 401);
-        }
-
+     
         return $next($request);
     }
 }
