@@ -28,6 +28,12 @@ Route::group([
     });
 
 
+    Route::prefix('/transactions')->controller('Transaction')->group(function () {
+
+        Route::post('/verify', 'verify');
+    });
+
+
 
 
 
