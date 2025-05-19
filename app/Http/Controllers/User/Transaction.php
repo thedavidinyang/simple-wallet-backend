@@ -26,10 +26,34 @@ class Transaction extends Controller
 
             return response()->json([
                 'status'  => false,
-                'message' => $e->getMessage(),
-                'errors'  => $e->getMessage(),
+                'message' => 'verify transaction failed',
+                'errors'  => json_decode($e->getMessage(), true),
             ], 400);
         }
     }
+
+    public function fetchTransaction(Request $request)
+    {
+        try {
+           
+            $user = auth()->user();
+
+            $transactions = $user->transactions() ->paginate(10);
+
+            return response()->json([
+                'status'  => true,
+                'message' => 'fetch transaction successful',
+                'data'    => $transactions,
+            ], 200);
+
+        } catch (\Exception $e) {
+
+            return response()->json([
+                'status'  => false,
+                'message' => 'fetch transaction failed',
+                'errors'  => json_decode($e->getMessage(), true),
+            ], 400);
+        }
+    }   
     
 }
