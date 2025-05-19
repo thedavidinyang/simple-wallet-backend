@@ -19,7 +19,6 @@ class AuthService
 
         } catch (\Throwable $e) {
 
-            requestLog($credentials, $e->getMessage(), 'error', 'user.login', 'failed');
 
             return response()->json([
                 'error'  => $e->getMessage(),
