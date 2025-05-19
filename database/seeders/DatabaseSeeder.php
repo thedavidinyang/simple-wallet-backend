@@ -21,10 +21,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            StaffRoleSeeder::class,
-            PolicySeeder::class,
-            SuperAdminSeeder::class,
-            CountrySeeder::class,
 
             
             
