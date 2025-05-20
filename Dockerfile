@@ -57,8 +57,10 @@ RUN mkdir -p /var/run/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
-# Expose port 8080
-EXPOSE 8080
+# Expose port 4000
+EXPOSE 5000
+EXPOSE 4000
+EXPOSE 9000
 
 # Copy and set permissions for the start script
 COPY start.sh /usr/local/bin/start.sh
