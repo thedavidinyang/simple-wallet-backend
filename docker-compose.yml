@@ -12,7 +12,7 @@ services:
             - .:/var/www
 
         ports:
-            - "5000:8000"
+            - "5000:8080"
 
         depends_on:
             - db
