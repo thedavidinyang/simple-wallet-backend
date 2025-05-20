@@ -19,7 +19,7 @@ Route::group([
 Route::group([
     'prefix'     => '/user',
     'namespace'  => 'User',
-    'middleware' => ['json-response','jwt.verify', 'email.verify'],
+    'middleware' => ['json-response','jwt.verify'],
 ], function () {
 
     Route::prefix('/profile')->controller('Usercontroller')->group(function () {

@@ -18,7 +18,6 @@ class Transaction extends Model
         'amount' => 'decimal:8',
     ];
     public $hidden = [
-        'created_at',
         'updated_at',
     ];
     public function user()
