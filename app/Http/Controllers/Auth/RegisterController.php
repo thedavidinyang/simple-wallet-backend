@@ -16,9 +16,9 @@ class RegisterController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'full_name' => 'required|string|max:25|regex:/^\S*$/',
+            'full_name' => 'required|string|max:25',
             'email'     => 'required|string|email|max:50',
-            'password'  => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
+            'password'  => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -26,7 +26,7 @@ class RegisterController extends Controller
             return response()->json([
                 'status'  => false,
                 'message' => 'data validation failed',
-                'errors'  => $validator->errors(),
+                'errors'  => $validator->errors()->first(),
             ], 400);
 
         }

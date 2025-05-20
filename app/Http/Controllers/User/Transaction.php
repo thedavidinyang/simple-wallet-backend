@@ -55,5 +55,39 @@ class Transaction extends Controller
             ], 400);
         }
     }   
+
+
+    public function saveTransaction(Request $request)
+    {
+        try {
+            $request->validate([
+                'transaction' => 'required|string',
+                'webhook'         => 'required|numeric',
+                'amount'         => 'required|numeric',
+            ]);
+
+            $user = auth()->user();
+
+            $transaction = $user->transactions()->create([
+            
+            ]);
+
+            $user->wallet()->increment('balance', $request->amount);
+
+            return response()->json([
+                'status'  => true,
+                'message' => 'Transaction saved successfully',
+                'data'    => $transaction,
+            ], 201);
+
+        } catch (\Exception $e) {
+
+            return response()->json([
+                'status'  => false,
+                'message' => 'Save transaction failed',
+                'errors'  => json_decode($e->getMessage(), true),
+            ], 400);
+        }
+    }
     
 }

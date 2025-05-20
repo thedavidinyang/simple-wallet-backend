@@ -17,8 +17,10 @@ return new class extends Migration
             $table->foreignId('wallet_id')->constrained()->onDelete('cascade'); 
             $table->decimal('amount', 20, 8);
             $table->enum('type', ['credit', 'debit']);
+            $table->enum('status', ['pending', 'completed', 'failed']);
             $table->string('description')->nullable();
             $table->string('transaction_id')->unique();
+            $table->string('transaction_reference')->nullable();
             $table->timestamps();
         });
     }
