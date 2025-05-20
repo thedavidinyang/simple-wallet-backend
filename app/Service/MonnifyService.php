@@ -42,14 +42,14 @@ class MonnifyService
     {
         try {
 
-            $url = config('monnify.api_url') . '/v1/merchant/transactions/' . $transactionId;
+            $url = config('monnify.api_url') . '/api/v2/merchant/transactions/query?transactionReference=' . $transactionId;
+
 
         $this->headers = ['Authorization' => 'Bearer ' . $this->monAuth()];
 
 
-            $response = $this->sendGetRequest($url, [], $this->headers);
+            $response = $this->sendGetRequest($url, ['transactionReference' => $transactionId], $this->headers);
 
-            // return $response;
 
             if (isset($response['requestSuccessful']) && $response['requestSuccessful'] == true) {
                 return $response['responseBody'];

@@ -15,19 +15,47 @@ class Transaction extends Controller
 
         try {
             $request->validate([
-                'transaction_id' => 'required|string',
+                'status' => 'required|string',
+                'message' => 'required|string',
+                'transactionReference' => 'required|string',
+                'paymentReference' => 'required|string',
+                'authorizedAmount' => 'required|numeric',
             ]);
 
-            $MONNIFY = (new MonnifyService());
 
-            return $MONNIFY->verifyTransaction($request->transaction_id);
+            $MONNIFY = (new MonnifyService);
+
+            $verifyData =  $MONNIFY->verifyTransaction($request->transactionReference);
+
+            if (isset($verifyData['paymentStatus']) && $verifyData['paymentStatus'] == 'PAID') {
+                $user = auth()->user();
+
+                $transaction = $user->transactions()->create([
+                    'transaction_id' => $request->transactionReference,
+                    'amount'         => $request->authorizedAmount,
+                    'status'         => 'completed',
+                    'type'           => 'credit',
+                    'payment_reference' => $request->paymentReference,
+                ]);
+
+
+                    return response()->json([
+                        'status'  => true,
+                        'message' => 'Transaction succesful',
+                    ], 200);
+            } else {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Could not verify transaction',
+                ], 400);
+            }
 
         } catch (\Exception $e) {
 
             return response()->json([
                 'status'  => false,
                 'message' => 'verify transaction failed',
-                'errors'  => json_decode($e->getMessage(), true),
+                'errors'  => $e->getMessage(), 
             ], 400);
         }
     }

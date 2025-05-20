@@ -8,14 +8,14 @@ class Transaction extends Model
 {
     public $fillable = [
         'user_id',
-        'wallet_id',
         'amount',
         'type',
-        'description',
+        'status',
         'transaction_id',
+        'transaction_reference',
     ];
     public $casts = [
-        'amount' => 'decimal:8',
+        'amount' => 'decimal:2',
     ];
     public $hidden = [
         'updated_at',
