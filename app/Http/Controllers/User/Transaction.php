@@ -38,6 +38,8 @@ class Transaction extends Controller
                     'payment_reference' => $request->paymentReference,
                 ]);
 
+                $user->wallet()->increment('balance', $request->authorizedAmount);
+
 
                     return response()->json([
                         'status'  => true,
