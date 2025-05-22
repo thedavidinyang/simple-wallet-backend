@@ -1,4 +1,4 @@
-FROM php:8.2
+FROM php:8.2.4
 
 # Install system dependencies
 RUN apt-get update -y && apt-get install -y \
@@ -23,8 +23,8 @@ RUN apt-get update -y && apt-get install -y \
     && docker-php-ext-configure gd --with-jpeg --with-webp --with-xpm --with-freetype \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql  pdo_pgsql mysqli bcmath zip mbstring exif pcntl
 
-# Install Redis extension
-RUN pecl install redis && docker-php-ext-enable redis
+# # Install Redis extension
+# RUN pecl install redis && docker-php-ext-enable redis
 
 # Configure PHP
 RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory-limit.ini \
@@ -49,18 +49,16 @@ RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www/storage \
     && chmod -R 755 /var/www/bootstrap/cache
 
-RUN apt-get update && apt-get install -y supervisor
-RUN mkdir -p /var/log/supervisor
-RUN mkdir -p /var/run/supervisor
+# RUN apt-get update && apt-get install -y supervisor
+# RUN mkdir -p /var/log/supervisor
+# RUN mkdir -p /var/run/supervisor
 
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+# COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 # Expose port 4000
-EXPOSE 5000
-EXPOSE 4000
-EXPOSE 9000
+EXPOSE 5000 4000 9000
 
 # Copy and set permissions for the start script
 COPY start.sh /usr/local/bin/start.sh

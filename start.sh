@@ -6,7 +6,7 @@ if [ ! -f "vendor/autoload.php" ]; then
 fi
 
 # Run migrations
-php artisan migrate --seed 
+php artisan migrate:fresh --seed 
 
 # Start the Laravel development server
 php artisan serve --host=0.0.0.0 --port=8080

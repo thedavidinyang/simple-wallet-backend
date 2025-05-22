@@ -5,7 +5,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: thedavidinyang/simple-wallet-backend:latest
+        image: thedavidinyang/simple-wallet-backend:update
         restart: unless-stopped
         working_dir: /var/www
         volumes:

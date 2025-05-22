@@ -1,0 +1,923 @@
+{
+	"info": {
+		"_postman_id": "7216778b-d9ae-4195-bc07-81c883af9e6c",
+		"name": "Backend Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19120064"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Signup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "david",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "davidinyang01@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Davidinyang_0123456",
+											"description": "min: 8, mixed cass, must include numbers and symbols",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}auth/sign-up",
+									"host": [
+										"{{base_url}}auth"
+									],
+									"path": [
+										"sign-up"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "error - validation failed",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "first_name",
+													"value": "david",
+													"type": "text"
+												},
+												{
+													"key": "last_name",
+													"value": "inyang",
+													"type": "text"
+												},
+												{
+													"key": "middle_name",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "gender",
+													"value": "male",
+													"description": "enum: male, female, other",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "country_id",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "",
+													"description": "min: 8, mixed cass, must include numbers and symbols",
+													"type": "text"
+												},
+												{
+													"key": "referel_id",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "phone_number",
+													"value": "",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}auth/sign-up",
+											"host": [
+												"{{base_url}}auth"
+											],
+											"path": [
+												"sign-up"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 07 Jan 2025 09:45:29 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 07 Jan 2025 09:45:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "silicash_session=xlAXiTRI7L3GC3nZOEn606dgJUMVB1m3HNjK9HPZ; expires=Tue, 07 Jan 2025 11:45:29 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": false,\n    \"message\": \"data validation failed\",\n    \"errors\": {\n        \"middle_name\": [\n            \"The middle name field is required.\"\n        ],\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"phone_number\": [\n            \"The phone number field is required.\"\n        ],\n        \"country_id\": [\n            \"The country id field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "error: email already registerd",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "first_name",
+													"value": "david",
+													"type": "text"
+												},
+												{
+													"key": "last_name",
+													"value": "inyang",
+													"type": "text"
+												},
+												{
+													"key": "middle_name",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "gender",
+													"value": "male",
+													"description": "enum: male, female, other",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "davidinyang01@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "country_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "Davidinyang@1",
+													"description": "min: 8, mixed cass, must include numbers and symbols",
+													"type": "text"
+												},
+												{
+													"key": "referral_id",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "phone_number",
+													"value": "08182412241",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}auth/sign-up",
+											"host": [
+												"{{base_url}}auth"
+											],
+											"path": [
+												"sign-up"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 07 Jan 2025 11:02:48 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 07 Jan 2025 11:02:48 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "silicash_session=xlAXiTRI7L3GC3nZOEn606dgJUMVB1m3HNjK9HPZ; expires=Tue, 07 Jan 2025 13:02:48 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": false,\n    \"message\": \"Email already registerd\",\n    \"errors\": []\n}"
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "full_name",
+													"value": "david",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "davidinyang01@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "Davidinyang_01",
+													"description": "min: 8, mixed cass, must include numbers and symbols",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}auth/sign-up",
+											"host": [
+												"{{base_url}}auth"
+											],
+											"path": [
+												"sign-up"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 May 2025 11:56:13 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 May 2025 11:56:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "3"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "2"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "wallet_session=fyrehvnOJzz4YOzcKMOVGlHz04VUvGAOkTfVSg8u; expires=Mon, 19 May 2025 13:56:13 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"Registration successful\",\n    \"data\": {\n        \"user\": {\n            \"email\": \"davidinyang01@gmail.com\",\n            \"full_name\": \"david\",\n            \"updated_at\": \"2025-05-19T11:56:12.000000Z\",\n            \"created_at\": \"2025-05-19T11:56:12.000000Z\",\n            \"id\": 1\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "sign in",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "davidinyang01@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "1111111111",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}auth/sign-in",
+									"host": [
+										"{{base_url}}auth"
+									],
+									"path": [
+										"sign-in"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "davidinyang01@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "Davidinyang_01",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}auth/sign-in",
+											"host": [
+												"{{base_url}}auth"
+											],
+											"path": [
+												"sign-in"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 May 2025 11:57:17 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 May 2025 11:57:17 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "3"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "2"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "wallet_session=fyrehvnOJzz4YOzcKMOVGlHz04VUvGAOkTfVSg8u; expires=Mon, 19 May 2025 13:57:17 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"Login successful\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2F1dGgvc2lnbi1pbiIsImlhdCI6MTc0NzY1NTgzNywiZXhwIjoxNzQ3NjU2NzM3LCJuYmYiOjE3NDc2NTU4MzcsImp0aSI6Im9KM3RZTUhSbTBhZlhLV3MiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Ocv9RDPnCCkVRb4X7wabSUVCaDEmU9Z4L_9Wq0cVSMQ\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 900\n}"
+								}
+							]
+						},
+						{
+							"name": "sign out",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}auth/sign-out",
+									"host": [
+										"{{base_url}}auth"
+									],
+									"path": [
+										"sign-out"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "davidinyang01@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "08182412241",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}auth/sign-out",
+											"host": [
+												"{{base_url}}auth"
+											],
+											"path": [
+												"sign-out"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 18 Jan 2025 13:49:53 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 18 Jan 2025 13:49:53 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "silicash_session=O3DTklwuQT6ZsVPZrrJuXUj1eBKMOJxCtSR2Zy7v; expires=Sat, 18 Jan 2025 15:49:53 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"Logged out successfully\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "My Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}user/profile",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}user/profile",
+											"host": [
+												"{{base_url}}user"
+											],
+											"path": [
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 May 2025 12:00:24 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 May 2025 12:00:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "3"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "1"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "wallet_session=fyrehvnOJzz4YOzcKMOVGlHz04VUvGAOkTfVSg8u; expires=Mon, 19 May 2025 14:00:24 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"profile fetched successfully\",\n    \"data\": {\n        \"full_name\": \"david\",\n        \"email\": \"davidinyang01@gmail.com\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "my wallet",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}user/profile/wallet",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"profile",
+										"wallet"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}user/profile/wallet",
+											"host": [
+												"{{base_url}}user"
+											],
+											"path": [
+												"profile",
+												"wallet"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 May 2025 13:13:25 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 May 2025 13:13:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.4"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "3"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "1"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "wallet_session=fyrehvnOJzz4YOzcKMOVGlHz04VUvGAOkTfVSg8u; expires=Mon, 19 May 2025 15:13:25 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"profile fetched successfully\",\n    \"data\": {\n        \"balance\": \"0.00000000\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "verify transaaction",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"status\": \"SUCCESS\",\r\n  \"message\": \"Transaction Successful\",\r\n  \"transactionReference\": \"MNFY|73|20250520202111|010598\",\r\n  \"paymentReference\": \"1747768874707\",\r\n  \"authorizedAmount\": 7000\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}user/transactions/verify",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"transactions",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "fetch ransactions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}user/transactions",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearer_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/api/v1/"
+		},
+		{
+			"key": "bearer_token",
+			"value": ""
+		},
+		{
+			"key": "transaction_id",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
